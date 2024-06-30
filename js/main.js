@@ -1,6 +1,3 @@
-// Store data
-let trainingData;
-
 // Assign functions
 document.getElementById("train-data").addEventListener("click", trainModel);
 document
@@ -18,16 +15,7 @@ document
       complete: function (results) {
         trainingData = formatData(results.data);
         console.log("Loaded data!", trainingData);
+        setMessage("Loaded data!");
       },
     });
   });
-
-// Create a new instance of a neural network
-const net = new brain.NeuralNetwork({
-  hiddenLayers: [4],
-});
-
-// Make a prediction
-// const newAccount = [daysSinceEnrollment("2016-01-15"), 2500, 3200, 45, 2];
-// const output = net.run(newAccount);
-// console.log(`Prediction for new account: ${output}`);

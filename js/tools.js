@@ -27,3 +27,23 @@ function normalize(value, i) {
 
   return (value - bounds[i]["min"]) / (bounds[i]["max"] - bounds[i]["min"]);
 }
+
+// UI Functions
+function setMessage(text) {
+  document.getElementById("prediction-text").innerText = text;
+}
+
+function getInputs() {
+  const values = document.getElementById("make-prediction").value.split(",");
+
+  if (values.length == 4) return values;
+
+  setMessage("You must enter 4 values separated by commas.");
+}
+
+function showLoading(loading) {
+  document.getElementById("loading").style.display = loading ? "block" : "none";
+  document.querySelector("section").style.visibility = loading
+    ? "hidden"
+    : "visible";
+}

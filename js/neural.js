@@ -1,46 +1,80 @@
+// Create a new instance of a neural network
+const network = new brain.NeuralNetwork({
+  hiddenLayers: [4],
+});
+
+// Store training data
+let trainingData;
+
 function trainModel() {
-  net.train(trainingData, {
-    log: true,
-    logPeriod: 1000,
-    iterations: 4000000,
-    errorThresh: 0.025,
+  if (!trainingData) return;
+
+  showLoading(true);
+
+  const trainingCode = `
+  importScripts("https://cdn.jsdelivr.net/npm/brain.js");
+  onmessage = function (e) {
+    const { trainingData, options } = e.data;
+
+    const network = new brain.NeuralNetwork();
+    network.train(trainingData, options);
+    const trainedNetworkJSON = network.toJSON();
+    postMessage({ status: "success", trainedNetwork: trainedNetworkJSON });
+  };`;
+
+  const blob = new Blob([trainingCode], { type: "application/javascript" });
+  const workerUrl = URL.createObjectURL(blob);
+
+  const worker = new Worker(workerUrl);
+
+  worker.postMessage({
+    trainingData: trainingData,
+    options: {
+      log: true,
+      logPeriod: 1000,
+      iterations: 4000000,
+      errorThresh: 0.025,
+    },
   });
 
-  document.getElementById("prediction-text").innerText =
-    "Model Training Complete!";
+  worker.onmessage = function (e) {
+    if (e.data.status === "success") {
+      network.fromJSON(e.data.trainedNetwork);
+
+      showLoading(false);
+      setMessage("Training Successful!");
+    }
+  };
+
+  worker.onerror = function (err) {
+    showLoading(false);
+    setMessage("Training Failed!");
+  };
 }
 
 function makePrediction() {
-  const format = (num, decimals) =>
-    num.toLocaleString("en-US", {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals,
-    });
+  const values = getInputs();
 
-  const values = document.getElementById("make-prediction").value.split(",");
+  if (!values) return;
 
   try {
-    const output = net.run(values.map(normalize));
+    let output;
+    output = network.run(values.map(normalize));
+    output *= 100;
+    output = output.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
 
-    document.getElementById(
-      "prediction-text"
-    ).innerText = `This accounts has a ${format(
-      output * 100,
-      2
-    )}% chance of being workable.`;
+    setMessage(`This account has a ${output}% chance of being workable.`);
   } catch (error) {
     console.log(error);
     switch (error.message) {
       case "network not runnable":
-        document.getElementById("prediction-text").innerText =
-          "AI model needs to be trained first.";
+        setMessage("AI model needs to be trained first.");
         break;
-      case "input length 1 must match options.inputSize of 4":
-        document.getElementById("prediction-text").innerText =
-          "You must enter 4 values separated by commas.";
-        break;
-
       default:
+        console.log("Error:", error);
         break;
     }
   }

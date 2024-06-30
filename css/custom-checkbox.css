@@ -34,7 +34,8 @@
 
 /* On mouse-over, change background color */
 .checkbox-container:hover input ~ .checkmark {
-  background-color: #eee;
+  background-color: #e7e7e7;
+  transition: background-color 0.15s;
 }
 
 /* When the checkbox is checked, add a colored background */

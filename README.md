@@ -14,3 +14,6 @@ Currently, the tool only takes 4 parameters:
 2. Current Balance (Min: $100, Max: $150,000)
 3. Legal Status (Min: 0, Max: 3)
 4. Days Past Due (Min: 0, Max: 1,200)
+
+## Normalize
+Check the 'normalize' box to convert the parameters of the data being fed to the model into values between 0 and 1, based on the constraints mentioned above.

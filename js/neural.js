@@ -7,7 +7,7 @@ function trainModel() {
   });
 
   document.getElementById("prediction-text").innerText =
-    "Model training complete!";
+    "Model Training Complete";
 }
 
 function makePrediction() {

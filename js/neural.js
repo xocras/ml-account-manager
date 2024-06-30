@@ -6,8 +6,14 @@ const network = new brain.NeuralNetwork({
 // Store training data
 let trainingData;
 
+// Store prediction output
+let networkOutput;
+
 function trainModel() {
-  if (!trainingData) return;
+  if (!trainingData) {
+    setMessage("Load data to train the model first.");
+    return;
+  }
 
   showLoading(true);
 
@@ -53,29 +59,23 @@ function trainModel() {
 }
 
 function makePrediction() {
-  const values = getInputs();
-
-  if (!values) return;
-
-  try {
-    let output;
-    output = network.run(values.map(normalize));
-    output *= 100;
-    output = output.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-
-    setMessage(`This account has a ${output}% chance of being workable.`);
-  } catch (error) {
-    console.log(error);
-    switch (error.message) {
-      case "network not runnable":
-        setMessage("AI model needs to be trained first.");
-        break;
-      default:
-        console.log("Error:", error);
-        break;
-    }
+  if (!network.sizes.length) {
+    setMessage("Model needs to be trained first.");
+    return;
   }
+
+  const values = document.getElementById("make-prediction").value.split(",");
+
+  if (values.length !== 4) {
+    setMessage("You must enter 4 commas separated values.");
+    return;
+  }
+
+  networkOutput = network.run(values.map(normalize)) * 100;
+  networkOutput = networkOutput.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  setMessage(`This account has a ${networkOutput}% chance of being workable.`);
 }

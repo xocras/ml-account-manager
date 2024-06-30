@@ -21,12 +21,12 @@ function makePrediction() {
   try {
     const output = net.run(values.map(normalize));
 
-    console.log(
-      `This accounts has a ${format(
-        output * 100,
-        2
-      )}% chance of being workable.`
-    );
+    document.getElementById(
+      "prediction-text"
+    ).innerText = `This accounts has a ${format(
+      output * 100,
+      2
+    )}% chance of being workable.`;
   } catch (error) {
     console.log(error);
     switch (error.message) {

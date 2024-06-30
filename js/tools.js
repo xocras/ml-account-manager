@@ -38,7 +38,7 @@ function getInputs() {
 
   if (values.length == 4) return values;
 
-  setMessage("You must enter 4 values separated by commas.");
+  setMessage("You must enter 4 commas separated values.");
 }
 
 function showLoading(loading) {

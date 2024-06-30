@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/material-button.css" />
     <link rel="stylesheet" href="./css/loading-wheel.css" />
+    <link rel="stylesheet" href="./css/custom-checkbox.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,8 +30,11 @@
         <h1>Account Manager</h1>
         <label class="bold" for="training-examples">Load CSV:</label>
         <div>
-          <input type="checkbox" id="normalize" name="normalize" />
-          <label for="normalize">Normalize Data</label>
+          <label for="normalize" class="checkbox-container"
+            >Normalize Data
+            <input type="checkbox" id="normalize" name="normalize" />
+            <span class="checkmark"></span>
+          </label>
         </div>
         <input
           id="training-examples"

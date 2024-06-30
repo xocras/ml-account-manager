@@ -6,7 +6,8 @@ function trainModel() {
     errorThresh: 0.025,
   });
 
-  console.log("Model training complete!");
+  document.getElementById("prediction-text").innerText =
+    "Model training complete!";
 }
 
 function makePrediction() {

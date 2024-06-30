@@ -1,0 +1,85 @@
+.red {
+  color: #f44336;
+}
+
+* {
+  box-sizing: border-box;
+  color: #212121;
+}
+
+label.bold {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+input[type="checkbox"] + label {
+  font-size: 0.8em;
+}
+
+body {
+  font-family: sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  height: 100vh;
+  padding: 32px 0;
+  margin: 0;
+  overflow-y: hidden;
+
+  background-image: url("../rsc/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  padding: 32px 56px;
+  margin: 0 16px;
+
+  max-width: 480px;
+  background-color: #ffffff;
+  border-radius: 16px;
+
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+section > * {
+  margin-top: 24px;
+}
+
+p {
+  text-align: center;
+  padding-top: 16px;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+footer {
+  padding: 8px;
+  color: #ffffff;
+  background-color: #212121;
+  width: 100%;
+
+  position: fixed;
+  bottom: 0;
+
+  text-align: center;
+}

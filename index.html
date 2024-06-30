@@ -4,8 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account Manager</title>
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/brain.js"></script>
   </head>
   <body>
-    Hello World!
+    <h1>Account Manager</h1>
+
+    <section class="view">
+      <label for="training-examples">Random Examples:</label>
+      <input
+        id="training-examples"
+        name="training-examples"
+        type="number"
+        value="1000"
+      />
+      <button id="train-data">Train Account Manager</button>
+    </section>
+    <script src="./scripts/tools.js"></script>
+    <script src="./scripts/neural.js"></script>
+    <script src="./scripts/main.js"></script>
   </body>
 </html>

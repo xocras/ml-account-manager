@@ -8,12 +8,12 @@
 }
 
 .spinner {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid rgb(244, 237, 226);
+  border-top: 16px solid #c4b39b;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
+  width: 100px;
+  height: 100px;
+  animation: spin 0.5s linear infinite;
 }
 
 @keyframes spin {

@@ -16,6 +16,10 @@ input[type="checkbox"] + label {
   font-size: 0.8em;
 }
 
+input[type="text"] {
+  text-align: center;
+}
+
 body {
   font-family: sans-serif;
   font-optical-sizing: auto;
@@ -63,8 +67,10 @@ section > * {
 }
 
 p {
+  font-weight: 300;
   text-align: center;
-  padding-top: 16px;
+  padding-top: 8px;
+  max-width: 300px;
 }
 
 h1 {

@@ -45,10 +45,10 @@ section {
   align-items: center;
 
   flex-direction: column;
-  padding: 32px 56px;
+  padding: 32px 48px;
   margin: 0 16px;
 
-  max-width: 480px;
+  max-width: 380px;
   background-color: #ffffff;
   border-radius: 16px;
 
@@ -69,7 +69,13 @@ p {
 
 h1 {
   font-size: 1.5em;
+  margin-top: 16px;
   margin-bottom: 0;
+  text-decoration: underline;
+}
+
+label.bold + * {
+  margin-top: 16px;
 }
 
 footer {

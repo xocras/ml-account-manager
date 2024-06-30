@@ -111,15 +111,13 @@ input[type="file"]::file-selector-button:hover:focus::before,
 
 /* Active */
 button:active,
-input[type="file"]::file-selector-button:active,
-.checkmark:active {
+input[type="file"]::file-selector-button:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 button:active::after,
-input[type="file"]::file-selector-button:active::after,
-.checkmark:active::after {
+input[type="file"]::file-selector-button:active::after {
   opacity: 0.32;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0s;

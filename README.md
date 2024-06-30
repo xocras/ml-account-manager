@@ -13,4 +13,4 @@ Currently, the tool only takes 4 parameters:
 1. Original Balance (Min: $100, Max: $90,000)
 2. Current Balance (Min: $100, Max: $150,000)
 3. Legal Status (Min: 0, Max: 3)
-4. Days Past Due (Min: 0, MaxL 1,200)
+4. Days Past Due (Min: 0, Max: 1,200)

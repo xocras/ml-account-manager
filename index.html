@@ -5,24 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account Manager</title>
     <link rel="shortcut icon" href="#" />
-    <link rel="stylesheet" href="./style/style.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/material-button.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/brain.js"></script>
   </head>
   <body>
-    <h1>Account Manager</h1>
+    <main>
+      <section>
+        <h1>Account Manager</h1>
+        <label class="bold" for="training-examples">Load CSV:</label>
+        <div>
+          <input type="checkbox" id="normalize" name="normalize" />
+          <label for="normalize">Normalize Data</label>
+        </div>
+        <input
+          id="training-examples"
+          name="training-examples"
+          type="file"
+          accept=".csv"
+        />
+        <button id="train-data">Train Account Manager</button>
 
-    <section class="view">
-      <label for="training-examples">Random Examples:</label>
-      <input
-        id="training-examples"
-        name="training-examples"
-        type="number"
-        value="1000"
-      />
-      <button id="train-data">Train Account Manager</button>
-    </section>
-    <script src="./scripts/tools.js"></script>
-    <script src="./scripts/neural.js"></script>
-    <script src="./scripts/main.js"></script>
+        <label class="bold" for="make-prediction">Make a Prediction:</label>
+        <input type="text" name="make-prediction" id="make-prediction" />
+        <button id="submit-prediction">Submit</button>
+        <p id="prediction-text"></p>
+      </section>
+    </main>
+
+    <footer>Made with <span class="red">&#9829;</span> by Oscar Cruz</footer>
+
+    <script src="./js/tools.js"></script>
+    <script src="./js/neural.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
